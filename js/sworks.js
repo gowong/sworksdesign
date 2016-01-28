@@ -1,8 +1,7 @@
 var SCROLL_SPEED = 1000;
-var MAILGUN_API_URL = 'https://api.mailgun.net/v3/sworksdesign.com/messages';
-var MAILGUN_API_USERNAME = 'api';
-var MAILGUN_API_KEY = '***REMOVED***';
-var TO_EMAIL = 'Sworksdesign.films@gmail.com';
+var PARSE_API_URL = 'https://api.parse.com/1/functions/email';
+var PARSE_APP_ID = 'cOLehws9n6R0OlPU6sN5yNe2bNrd0eiYct8YLHdi';
+var PARSE_REST_API_KEY = '6akvWrdhzRJ4RQv7QmK6SjhT43sGCY5Mql4GcOI5';
 
 function setupScrollLink(link, target) {
   $(link).on('click', function(e) {
@@ -15,9 +14,10 @@ function setupScrollLink(link, target) {
 
 function submitContactForm() {
   // Build headers
-  var base64Auth = btoa(MAILGUN_API_USERNAME + ':' + MAILGUN_API_KEY);
   var headers = {
-    authorization: 'Basic ' + base64Auth
+    'x-parse-application-id': PARSE_APP_ID,
+    'x-parse-rest-api-key': PARSE_REST_API_KEY,
+    'content-type': 'application/json'
   };
 
   // Build form data
@@ -32,22 +32,14 @@ function submitContactForm() {
     text: message
   };
 
-  // Convert JSON to form data
-  var formData = new FormData();
-  for (var key in data) {
-    formData.append(key, data[key]);
-  }
-
   // Send email request
   $.ajax({
     method: 'POST',
-    url: MAILGUN_API_URL,
+    url: PARSE_API_URL,
     headers: headers,
-    data: formData,
-    mimeType: 'multipart/form-data',
+    data: data,
     crossDomain: true,
     cache: false,
-    contentType: false,
     processData: false
   }).always(function() {
     // Clear the form
