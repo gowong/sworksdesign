@@ -20,16 +20,12 @@ function submitContactForm() {
     'content-type': 'application/json'
   };
 
-  // Build form data
-  var name = $('#contact-form-name').val();
-  var email = $('#contact-form-email').val();
-  var subject = $('#contact-form-subject').val();
-  var message = $('#contact-form-message').val();
+  // Build data
   var data = {
-    to: TO_EMAIL,
-    from: name + ' <' + email +'>',
-    subject: subject,
-    text: message
+    name: $('#contact-form-name').val(),
+    email: $('#contact-form-email').val(),
+    subject: $('#contact-form-subject').val(),
+    message: $('#contact-form-message').val()
   };
 
   // Send email request
