@@ -95,6 +95,8 @@ hr {
   max-width: 75%;
   max-height: 50%;
   margin: 0 auto;
+  flex: 0 0 auto;
+  object-fit: scale-down;
 }
 
 #hero-scroll-container {
