@@ -16,8 +16,7 @@ function submitContactForm() {
   // Build headers
   var headers = {
     'x-parse-application-id': PARSE_APP_ID,
-    'x-parse-rest-api-key': PARSE_REST_API_KEY,
-    'content-type': 'application/json'
+    'x-parse-rest-api-key': PARSE_REST_API_KEY
   };
 
   // Build data
@@ -35,8 +34,7 @@ function submitContactForm() {
     headers: headers,
     data: data,
     crossDomain: true,
-    cache: false,
-    processData: false
+    dataType: 'json'
   }).always(function() {
     // Clear the form
     $('#contact-form')[0].reset();
