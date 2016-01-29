@@ -5,7 +5,7 @@ html, body {
 
 body {
   background-color: #fff;
-  color: #7E7F80;
+  color: #777;
   font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   text-align: justify;
   line-height: 22px;
@@ -35,16 +35,16 @@ b {
   color: #4A4B4C;
 }
 
+a, a:hover, a:focus, a > b {
+  color: #1cd3d1;
+}
+
 a:hover {
   text-decoration: underline;
 }
 
 a:focus {
   outline: none;
-}
-
-a, a:hover, a:focus, a > b {
-  color: #2BE3E1;
 }
 
 hr {
@@ -106,27 +106,18 @@ hr {
   bottom: 10%;
 }
 
-#hero-scroll {
-  padding-top: 2px;
-}
-
 #hero-scroll, #footer-scroll {
   border-radius: 50%;
   font-size: 24px;
-  opacity: 0.75;
-  transition: opacity 0.3s ease, background 0.3s ease;
-}
-
-#hero-scroll:hover, #footer-scroll:hover {
-  opacity: 1;
-}
-
-#hero-scroll:hover {
-  background-color: rgba(0, 0, 0, 0.1);
+  transition: background 0.3s ease;
 }
 
 #hero-scroll > i, #footer-scroll > i {
   font-size: 60px;
+}
+
+#hero-scroll:hover {
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 #contact-info-container {
@@ -140,16 +131,15 @@ hr {
 }
 
 #contact-form {
-  overflow: hidden;
-  padding: 50px 25px;
+  padding: 35px 50px;
 }
 
 #contact-form-submit {
-  background-color: #2BE3E1;
+  background-color: #1cd3d1;
 }
 
 #contact-form-submit:hover {
-  background-color: #53EAEA;
+  background-color: #2be3e1;
 }
 
 #footer {
@@ -171,7 +161,7 @@ hr {
 
 #footer > .container > #footer-scroll {
   margin-bottom: 5px;
-  color: #2BE3E1;
+  color: #1cd3d1;
 }
 
 #footer-scroll:hover {
