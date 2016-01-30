@@ -153,7 +153,11 @@ hr {
 }
 
 #contact-form {
-  padding: 35px 50px;
+  padding: 30px;
+}
+
+#contact-form .row {
+  margin-bottom: 0;
 }
 
 #contact-form-submit {
@@ -174,7 +178,7 @@ hr {
   right: 0;
   width: 100%;
   height: 100%;
-  padding: 50px 0;
+  padding: 20px;
   justify-content: center;
   transform: rotateY(180deg);
   background-color: #fff;
@@ -183,7 +187,7 @@ hr {
 
 #contact-form-message-container i {
   font-size: 34px;
-  margin: 0 15px;
+  margin-left: 15px;
 }
 
 #social-buttons-container {
@@ -239,6 +243,10 @@ hr {
   #contact-form-submit {
     display: block;
     width: 100%;
+  }
+
+  #contact-form-message-container, #contact-form-message-container i {
+    font-size: 28px;
   }
 }
 
