@@ -12,6 +12,27 @@ function setupScrollLink(link, target) {
   });
 }
 
+function resetContactForm() {
+  $('#contact-form-flip-container > .card-panel').removeClass('flipped');
+  // Clear the form
+  $('#contact-form')[0].reset();
+  // Hide after a delay so that they are still shown during the animation
+  setTimeout(function() {
+    $('#contact-form-message-container .green-text').addClass('hide');
+    $('#contact-form-message-container .red-text').addClass('hide');
+  }, 1000);
+}
+
+function showContactSuccessMessage() {
+  $('#contact-form-message-container .green-text').removeClass('hide');
+  $('#contact-form-message-container .red-text').addClass('hide');
+}
+
+function showContactErrorMessage() {
+  $('#contact-form-message-container .green-text').addClass('hide');
+  $('#contact-form-message-container .red-text').removeClass('hide');
+}
+
 function submitContactForm() {
   // Build headers
   var headers = {
@@ -35,13 +56,17 @@ function submitContactForm() {
     data: data,
     crossDomain: true,
     dataType: 'json'
-  }).always(function() {
-    // Clear the form
-    $('#contact-form')[0].reset();
   }).done(function(data) {
-    alert('success'); 
+    showContactSuccessMessage();
   }).fail(function(error) {
-    alert('error');
+    showContactErrorMessage();
+    // Flip card back after a delay
+    setTimeout(function() {
+      resetContactForm();
+    }, 3000);
+  }).always(function() {
+    // Flip contact form card
+    $('#contact-form-flip-container > .card-panel').toggleClass('flipped');
   });
 }
 
