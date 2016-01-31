@@ -224,7 +224,7 @@ $(function() {
   setupPortfolioVideos();
 
   // Initialize parallax images
-  // $('.parallax').parallax();
+  $('.parallax').parallax();
 
   // Handle contact form submission
   $('#contact-form').on('submit', function(e) {
