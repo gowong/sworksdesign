@@ -79,8 +79,36 @@ hr {
   height: 50%;
 }
 
-.video-container-21-5by9 {
-  padding-bottom: 43.25%;
+.portfolio-img {
+  cursor: pointer;
+  transition: opacity 1s ease;
+}
+
+.portfolio-img-container {
+  position: relative;
+}
+
+.portfolio-img-container > i {
+  position: absolute;
+  top: calc(50% - (90px / 2));
+  left: calc(50% - (90px / 2));
+  z-index: 1;
+  opacity: 0.45;
+  color: #fff;
+  cursor: pointer;
+  transition: opacity 1s ease;
+}
+
+.portfolio-img-container:hover > i {
+  opacity: 0.7;
+}
+
+.portfolio-img-container > i:hover {
+  opacity: 0.95;
+}
+
+.portfolio-img-container > i:hover ~ div > .portfolio-img {
+  opacity: 0.8;
 }
 
 .flippable {
