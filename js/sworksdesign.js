@@ -1,7 +1,13 @@
 var SCROLL_SPEED = 1000;
+var IMAGE_FADE_DELAY = 600;
 var PARSE_API_URL = 'https://api.parse.com/1/functions/email';
 var PARSE_APP_ID = 'cOLehws9n6R0OlPU6sN5yNe2bNrd0eiYct8YLHdi';
 var PARSE_REST_API_KEY = '6akvWrdhzRJ4RQv7QmK6SjhT43sGCY5Mql4GcOI5';
+var YOUTUBE_IFRAME_API = 'https://www.youtube.com/iframe_api';
+var youTubePlayer;
+var isYoutubeAPIReady;
+var initYouTubePlayerOnAPIReady;
+var imageZoomTimer;
 
 function setupScrollLink(link, target) {
   $(link).on('click', function(e) {
@@ -10,6 +16,109 @@ function setupScrollLink(link, target) {
       scrollTop: $(target).offset().top
     }, SCROLL_SPEED);
   });
+}
+
+function setupVideos() {
+  // Immediately initialize YouTube API so that it's ready when a video is played
+  initYouTubeAPI();
+
+  // Handle play icon clicks
+  $('.portfolio-img-container > i').on('click', function() {
+    $(this).next().find('.portfolio-img').click();
+  });
+
+  // Handle image clicks
+  $('.materialboxed').on('click', function() {
+    if (isYoutubeAPIReady) {
+      initYouTubePlayer();
+    } else {
+      initYouTubePlayerOnAPIReady = true;
+    }
+
+    // Close video when clicking the overlay
+    $('#materialbox-overlay').on('click', closeVideo);
+  });
+
+  // Close video when scrolling the window
+  $(window).on('scroll', $.debounce(250, true, closeVideo));
+}
+
+function initYouTubeAPI() {
+  // Async initialization of the YouTube API
+  var script = $('<script></script>').attr('src', YOUTUBE_IFRAME_API);
+  $('head').prepend(script);
+}
+
+// Called when the YouTube API is ready
+function onYouTubeIframeAPIReady() {
+  isYoutubeAPIReady = true;
+  // Initialize player if the user tried opening the player when the API was
+  // still loading
+  if (initYouTubePlayerOnAPIReady) {
+    initYouTubePlayerOnAPIReady = false;
+    initYouTubePlayer();
+  }
+}
+
+function initYouTubePlayer() {
+  var videoPlayer = $('#video-player')[0];
+  var image = $('.materialboxed.active');
+  youTubePlayer = new YT.Player(videoPlayer, {
+    width: image.width(),
+    height: image.height(),
+    videoId: image.attr('data-video-id'),
+    playerVars: {
+      autohide: 1,
+      rel: 0
+    },
+    events: {
+      onReady: playVideo
+    }
+  });
+}
+
+function playVideo() {
+  // Position the video on top of the zoomed image
+  var image = $('.materialboxed.active');
+  var imageWidth = image.width();
+  var imageHeight = image.height();
+  var videoPlayer = $(youTubePlayer.getIframe());
+  videoPlayer.css('max-width', image.css('max-width'));
+  videoPlayer.css('width', imageWidth);
+  videoPlayer.css('height', imageHeight);
+  videoPlayer.css('top', 'calc(50% - ' + (imageHeight / 2) + 'px)');
+  videoPlayer.css('left', 'calc(50% - ' + (imageWidth / 2) + 'px)');
+  // Add shadow
+  videoPlayer.addClass('z-depth-1');
+
+  // Hide image and show video with a fade animation
+  image.css('opacity', 0);
+  videoPlayer.css('opacity', 1);
+
+  // Reset image visibility styles after the animation ends so that the image
+  // can visibly unzoom when the video is closed
+  imageZoomTimer = setTimeout(function() {
+    image.css('opacity', 1);
+    // In case the video player is not perfectly aligned with the image
+    image.css('visibility', 'hidden');
+  }, IMAGE_FADE_DELAY);
+
+  // Play video
+  youTubePlayer.setPlaybackQuality('highres');
+  youTubePlayer.playVideo();
+}
+
+function closeVideo() {
+  if (imageZoomTimer) {
+    clearTimeout(imageZoomTimer);
+    imageZoomTimer = null;
+  }
+  var image = $('.materialboxed.active');
+  image.css('visibility', 'visible');
+  image.css('opacity', '');
+  if (youTubePlayer && !!youTubePlayer.getIframe()) {
+    youTubePlayer.destroy();
+  }
 }
 
 function resetContactForm() {
@@ -74,6 +183,9 @@ $(function() {
   // Setup scroll links
   setupScrollLink('#hero-scroll', '#about-section');
   setupScrollLink('#footer-scroll', '#hero-container');
+
+  // Setup videos
+  setupVideos();
 
   // Initialize parallax images
   $('.parallax').parallax();
