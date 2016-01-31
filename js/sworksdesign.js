@@ -72,10 +72,9 @@ function initYouTubePlayer() {
   var videoPlayer = $('#video-player')[0];
   var image = $('.materialboxed.active');
 
-  // Add loading spinner
-  var loadingSpinner = $('<div class="preloader-wrapper big active"><div class="spinner-layer spinner-red-only"><div class="circle-clipper left"><div class="circle"></div></div><div class="gap-patch"><div class="circle"></div></div><div class="circle-clipper right"><div class="circle"></div></div></div></div>');
+  // Show loading spinner
   setTimeout(function() {
-    image.closest('.portfolio-img-container').append(loadingSpinner);
+    showVideoLoadingSpinner();
   }, MATERIALBOX_ZOOM_DURATION);
 
   // Initialize player
@@ -89,7 +88,7 @@ function initYouTubePlayer() {
     },
     events: {
       onReady: function() {
-        loadingSpinner.remove();
+        hideVideoLoadingSpinner();
         playVideo();
       }
     }
@@ -128,16 +127,34 @@ function playVideo() {
 }
 
 function closeVideo() {
+  // Clear image zoom timer
   if (imageZoomTimer) {
     clearTimeout(imageZoomTimer);
     imageZoomTimer = null;
   }
+
+  // Show image
   var image = $('.materialboxed.active');
   image.css('visibility', 'visible');
   image.css('opacity', '');
+
+  // Destroy video
+  hideVideoLoadingSpinner();
   if (youTubePlayer && !!youTubePlayer.getIframe()) {
     youTubePlayer.destroy();
   }
+}
+
+function showVideoLoadingSpinner() {
+  var loadingSpinner = $('#video-player-spinner');
+  loadingSpinner.removeClass('hidden');
+  loadingSpinner.addClass('active');
+}
+
+function hideVideoLoadingSpinner() {
+  var loadingSpinner = $('#video-player-spinner');
+  loadingSpinner.addClass('hidden');
+  loadingSpinner.removeClass('active');
 }
 
 function resetContactForm() {
