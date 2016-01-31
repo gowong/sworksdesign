@@ -205,7 +205,7 @@ hr {
 #contact-form-flip-container > .card-panel {
   transform-style: preserve-3d;
   transform-origin: right center;
-  transition: transform 1s;
+  transition: transform 1s, box-shadow .25s;
 }
 
 #contact-form-flip-container > .card-panel.flipped {
