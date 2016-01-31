@@ -88,10 +88,21 @@ hr {
   position: relative;
 }
 
+.portfolio-img-container > .preloader-wrapper {
+  position: fixed;
+  top: calc(50% - 32px);
+  left: calc(50% - 32px);
+  z-index: 1001;
+}
+
+.portfolio-img-container > .preloader-wrapper > .spinner-layer {
+  border-color: #fff;
+}
+
 .portfolio-img-container > i {
   position: absolute;
-  top: calc(50% - (90px / 2));
-  left: calc(50% - (90px / 2));
+  top: calc(50% - 45px);
+  left: calc(50% - 45px);
   z-index: 1;
   opacity: 0.45;
   color: #fff;

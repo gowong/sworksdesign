@@ -1,5 +1,6 @@
 var SCROLL_SPEED = 1000;
 var IMAGE_FADE_DELAY = 600;
+var MATERIALBOX_ZOOM_DURATION = 200;
 var PARSE_API_URL = 'https://api.parse.com/1/functions/email';
 var PARSE_APP_ID = 'cOLehws9n6R0OlPU6sN5yNe2bNrd0eiYct8YLHdi';
 var PARSE_REST_API_KEY = '6akvWrdhzRJ4RQv7QmK6SjhT43sGCY5Mql4GcOI5';
@@ -18,7 +19,7 @@ function setupScrollLink(link, target) {
   });
 }
 
-function setupVideos() {
+function setupPortfolioVideos() {
   // Immediately initialize YouTube API so that it's ready when a video is played
   initYouTubeAPI();
 
@@ -63,6 +64,14 @@ function onYouTubeIframeAPIReady() {
 function initYouTubePlayer() {
   var videoPlayer = $('#video-player')[0];
   var image = $('.materialboxed.active');
+
+  // Add loading spinner
+  var loadingSpinner = $('<div class="preloader-wrapper big active"><div class="spinner-layer spinner-red-only"><div class="circle-clipper left"><div class="circle"></div></div><div class="gap-patch"><div class="circle"></div></div><div class="circle-clipper right"><div class="circle"></div></div></div></div>');
+  setTimeout(function() {
+    image.closest('.portfolio-img-container').append(loadingSpinner);
+  }, MATERIALBOX_ZOOM_DURATION);
+
+  // Initialize player
   youTubePlayer = new YT.Player(videoPlayer, {
     width: image.width(),
     height: image.height(),
@@ -72,7 +81,10 @@ function initYouTubePlayer() {
       rel: 0
     },
     events: {
-      onReady: playVideo
+      onReady: function() {
+        loadingSpinner.remove();
+        playVideo();
+      }
     }
   });
 }
@@ -184,8 +196,8 @@ $(function() {
   setupScrollLink('#hero-scroll', '#about-section');
   setupScrollLink('#footer-scroll', '#hero-container');
 
-  // Setup videos
-  setupVideos();
+  // Setup portfolio videos
+  setupPortfolioVideos();
 
   // Initialize parallax images
   $('.parallax').parallax();
