@@ -12,11 +12,6 @@ section {
   padding-bottom: 100px;
 }
 
-/* Alternate sections */
-section:nth-child(odd) {
-  background-color: #eee;
-}
-
 section h3 {
   margin-top: 0;
   margin-bottom: 0;
@@ -177,6 +172,11 @@ hr {
 
 #hero-scroll:hover {
   background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Alternate sections */
+#sections-container > section:nth-child(odd) {
+  background-color: #eee;
 }
 
 #contact-section {

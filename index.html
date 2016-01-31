@@ -47,116 +47,118 @@
       <div class="parallax"><img src="images/parallax.jpg"></div>
     </div>
 
-    <!-- About -->
-    <section id="about-section">
-      <div class="container">
-        <h3 class="center-align">ABOUT ME</h3>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-      </div>
-    </section>
-
-    <!-- Portfolio -->
-    <section id="portfolio-section">
-      <div class="container">
-        <h3 class="center-align">PORTFOLIO</h3>
-
-        <div class="portfolio-img-container">
-          <i class="material-icons large">play_circle_filled</i>
-          <img class="portfolio-img materialboxed responsive-img z-depth-1" src="images/video-1.jpg" data-video-id="fiPznaYePAY">
+    <div id="sections-container">
+      <!-- About -->
+      <section id="about-section">
+        <div class="container">
+          <h3 class="center-align">ABOUT ME</h3>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
         </div>
-        <hr>
+      </section>
 
-        <div class="portfolio-img-container">
-          <i class="material-icons large">play_circle_filled</i>
-          <img class="portfolio-img materialboxed responsive-img z-depth-1" src="images/video-2.jpg" data-video-id="ZFNQ-pMqxh4">
+      <!-- Portfolio -->
+      <section id="portfolio-section">
+        <div class="container">
+          <h3 class="center-align">PORTFOLIO</h3>
+
+          <div class="portfolio-img-container">
+            <i class="material-icons large">play_circle_filled</i>
+            <img class="portfolio-img materialboxed responsive-img z-depth-1" src="images/video-1.jpg" data-video-id="fiPznaYePAY">
+          </div>
+          <hr>
+
+          <div class="portfolio-img-container">
+            <i class="material-icons large">play_circle_filled</i>
+            <img class="portfolio-img materialboxed responsive-img z-depth-1" src="images/video-2.jpg" data-video-id="ZFNQ-pMqxh4">
+          </div>
+          <hr>
+
         </div>
-        <hr>
+      </section>
 
-      </div>
-    </section>
+      <!-- Contact -->
+      <section id="contact-section">
+        <div class="container">
+          <h3 class="center-align">CONTACT</h3>
 
-    <!-- Contact -->
-    <section id="contact-section">
-      <div class="container">
-        <h3 class="center-align">CONTACT</h3>
+          <!-- Contact info -->
+          <div id="contact-info-container" class="center-align">
+            <h5 id="contact-info-name">Sheldon Wong</h5>
+            <a id="contact-info-email" href="mailto:Sworksdesign.films@gmail.com"><b><em>sworksdesign.films@gmail.com</em></b></a>
+          </div>
 
-        <!-- Contact info -->
-        <div id="contact-info-container" class="center-align">
-          <h5 id="contact-info-name">Sheldon Wong</h5>
-          <a id="contact-info-email" href="mailto:Sworksdesign.films@gmail.com"><b><em>sworksdesign.films@gmail.com</em></b></a>
-        </div>
+          <!-- Contact form -->
+          <div class="row">
+            <div id="contact-form-flip-container" class="col s12 m12 l10 offset-l1">
+              <div class="card-panel">
 
-        <!-- Contact form -->
-        <div class="row">
-          <div id="contact-form-flip-container" class="col s12 m12 l10 offset-l1">
-            <div class="card-panel">
+                <form id="contact-form" class="flippable">
+                  <div class="row">
+                    <!-- Left column -->
+                    <div class="col s12 m12 l5">
 
-              <form id="contact-form" class="flippable">
-                <div class="row">
-                  <!-- Left column -->
-                  <div class="col s12 m12 l5">
+                      <!-- Name -->
+                      <div class="input-field">
+                        <i class="material-icons prefix">account_circle</i>
+                        <input id="contact-form-name" type="text" name="name" required>
+                        <label for="contact-form-name">Name</label>
+                      </div>
 
-                    <!-- Name -->
-                    <div class="input-field">
-                      <i class="material-icons prefix">account_circle</i>
-                      <input id="contact-form-name" type="text" name="name" required>
-                      <label for="contact-form-name">Name</label>
+                      <!-- Email -->
+                      <div class="input-field">
+                        <i class="material-icons prefix">mail</i>
+                        <input id="contact-form-email" class="validate" type="email" name="email"  required>
+                        <label for="contact-form-email">Email</label>
+                      </div>
+
+                      <!-- Subject -->
+                      <div class="input-field">
+                        <i class="material-icons prefix">create</i>
+                        <input id="contact-form-subject" type="text" name="subject" required>
+                        <label for="contact-form-subject">Subject</label>
+                      </div>
                     </div>
 
-                    <!-- Email -->
-                    <div class="input-field">
-                      <i class="material-icons prefix">mail</i>
-                      <input id="contact-form-email" class="validate" type="email" name="email"  required>
-                      <label for="contact-form-email">Email</label>
-                    </div>
+                    <!-- Right column -->
+                    <div class="col s12 m12 l7">
 
-                    <!-- Subject -->
-                    <div class="input-field">
-                      <i class="material-icons prefix">create</i>
-                      <input id="contact-form-subject" type="text" name="subject" required>
-                      <label for="contact-form-subject">Subject</label>
+                      <!-- Message -->
+                      <div class="input-field">
+                        <i class="material-icons prefix">message</i>
+                        <textarea id="contact-form-message" class="materialize-textarea" name="message" required></textarea>
+                        <label for="contact-form-message">Message</label>
+                      </div>
+
+                      <!-- Send -->
+                      <button id="contact-form-submit" class="btn right waves-effect" type="submit" name="action">Send</button>
                     </div>
                   </div>
+                </form>
 
-                  <!-- Right column -->
-                  <div class="col s12 m12 l7">
-
-                    <!-- Message -->
-                    <div class="input-field">
-                      <i class="material-icons prefix">message</i>
-                      <textarea id="contact-form-message" class="materialize-textarea" name="message" required></textarea>
-                      <label for="contact-form-message">Message</label>
-                    </div>
-
-                    <!-- Send -->
-                    <button id="contact-form-submit" class="btn right waves-effect" type="submit" name="action">Send</button>
-                  </div>
+                <!-- Contact form message -->
+                <div id="contact-form-message-container" class="flippable valign-wrapper">
+                  <!-- Success -->
+                  <span class="green-text hide">MESSAGE SENT</span>
+                  <i class="material-icons green-text hide">check_circle</i>
+                  <!-- Error -->
+                  <span class="red-text hide">FAILED TO SEND</span>
+                  <i class="material-icons red-text hide">cloud_off</i>
                 </div>
-              </form>
 
-              <!-- Contact form message -->
-              <div id="contact-form-message-container" class="flippable valign-wrapper">
-                <!-- Success -->
-                <span class="green-text hide">MESSAGE SENT</span>
-                <i class="material-icons green-text hide">check_circle</i>
-                <!-- Error -->
-                <span class="red-text hide">FAILED TO SEND</span>
-                <i class="material-icons red-text hide">cloud_off</i>
               </div>
-
             </div>
           </div>
-        </div>
 
-        <!-- Social buttons -->
-        <div id="social-buttons-container" class="center-align">
-          <a href="https://www.instagram.com/sworksdesign/"><i class="fa fa-instagram"></i></a>
-          <a href="https://vimeo.com/sworksdesign"><i class="fa fa-vimeo-square"></i></i></a>
-          <a href="https://www.youtube.com/channel/UCczIWwFYCfMH29Ysf-3ancQ"><i class="fa fa-youtube-square"></i></a>
-        </div>
+          <!-- Social buttons -->
+          <div id="social-buttons-container" class="center-align">
+            <a href="https://www.instagram.com/sworksdesign/"><i class="fa fa-instagram"></i></a>
+            <a href="https://vimeo.com/sworksdesign"><i class="fa fa-vimeo-square"></i></i></a>
+            <a href="https://www.youtube.com/channel/UCczIWwFYCfMH29Ysf-3ancQ"><i class="fa fa-youtube-square"></i></a>
+          </div>
 
-      </div>
-    </section>
+        </div>
+      </section>
+    </div>
 
     <!-- Footer -->
     <nav id="footer">
