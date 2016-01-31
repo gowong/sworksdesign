@@ -40,6 +40,13 @@ function setupPortfolioVideos() {
     $('#materialbox-overlay').on('click', closeVideo);
   });
 
+  // Close when pressing 'esc'
+  $(document).on('keyup', function(e) {
+    if (e.keyCode === 27) {
+      closeVideo();
+    }
+  });
+
   // Close video when scrolling the window
   $(window).on('scroll', $.debounce(250, true, closeVideo));
 }
