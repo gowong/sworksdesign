@@ -108,8 +108,7 @@ hr {
 }
 
 .flippable {
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 /* IDs */
