@@ -108,7 +108,8 @@ hr {
 }
 
 .flippable {
-  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
 }
 
 /* IDs */
@@ -223,10 +224,7 @@ hr {
 
 #contact-form-submit {
   background-color: #1cd3d1;
-}
-
-#contact-form-flip-container > .card-panel.flipped #contact-form-submit {
-  z-index: -1;
+  z-index: 0;
 }
 
 #contact-form-submit:hover {

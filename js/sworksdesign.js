@@ -157,8 +157,34 @@ function hideVideoLoadingSpinner() {
   loadingSpinner.removeClass('active');
 }
 
+function flipContactFormCard(side) {
+  // Internet explorer doesn't support the CSS 3D flip transform
+  if (isIE()) {
+    switch (side) {
+      case 'front':
+        $('#contact-form-message-container').css('transform', 'rotateY(180deg)');
+        $('#contact-form-message-container').css('z-index', '0');
+        break;
+      case 'back':
+        $('#contact-form-message-container').css('transform', 'none');
+        $('#contact-form-message-container').css('z-index', '1');
+        break;
+    }
+    $('#contact-form-message-container').toggleClass('card-panel');
+  } else {
+    switch (side) {
+      case 'front':
+        $('#contact-form-flip-container > .card-panel').removeClass('flipped');
+        break;
+      case 'back':
+        $('#contact-form-flip-container > .card-panel').addClass('flipped');
+        break;
+    }
+  }
+}
+
 function resetContactForm() {
-  $('#contact-form-flip-container > .card-panel').removeClass('flipped');
+  flipContactFormCard('front');
   // Clear the form
   $('#contact-form')[0].reset();
   // Hide after a delay so that they are still shown during the animation
@@ -210,9 +236,13 @@ function submitContactForm() {
       resetContactForm();
     }, 3000);
   }).always(function() {
-    // Flip contact form card
-    $('#contact-form-flip-container > .card-panel').toggleClass('flipped');
+    flipContactFormCard('back');
   });
+}
+
+function isIE() {
+  var msie = window.navigator.userAgent.indexOf("MSIE ");
+  return (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./));
 }
 
 $(function() {
