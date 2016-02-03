@@ -84,6 +84,7 @@ function initYouTubePlayer() {
     videoId: image.attr('data-video-id'),
     playerVars: {
       autohide: 1,
+      fs: 0,
       rel: 0
     },
     events: {
