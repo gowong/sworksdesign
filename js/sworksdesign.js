@@ -30,7 +30,11 @@ function setupPortfolioVideos() {
 
   // Handle image clicks
   $('.materialboxed').on('click', function() {
-    if (isYoutubeAPIReady) {
+    // Close the video if the image is clicked again while the video is loading
+    // but hasn't been shown yet
+    if (!!youTubePlayer) {
+      closeVideo();
+    } else if (isYoutubeAPIReady) {
       initYouTubePlayer();
     } else {
       initYouTubePlayerOnAPIReady = true;
@@ -143,6 +147,7 @@ function closeVideo() {
   hideVideoLoadingSpinner();
   if (youTubePlayer && !!youTubePlayer.getIframe()) {
     youTubePlayer.destroy();
+    youTubePlayer = null;
   }
 }
 
