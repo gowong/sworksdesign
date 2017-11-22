@@ -199,55 +199,6 @@ hr {
   font-size: 16px;
 }
 
-#contact-form-flip-container {
-  perspective: 800px;
-}
-
-#contact-form-flip-container > .card-panel {
-  transform-style: preserve-3d;
-  transform-origin: right center;
-  transition: transform 1s, box-shadow .25s;
-}
-
-#contact-form-flip-container > .card-panel.flipped {
-  transform: translateX(-100%) rotateY(-180deg);
-}
-
-#contact-form {
-  padding: 30px;
-}
-
-#contact-form .row {
-  margin-bottom: 0;
-}
-
-#contact-form-submit {
-  background-color: #1cd3d1;
-  z-index: 0;
-}
-
-#contact-form-submit:hover {
-  background-color: #2be3e1;
-}
-
-#contact-form-message-container {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 100%;
-  height: 100%;
-  padding: 20px;
-  justify-content: center;
-  transform: rotateY(180deg);
-  background-color: #fff;
-  font-size: 34px;
-}
-
-#contact-form-message-container i {
-  font-size: 34px;
-  margin-left: 15px;
-}
-
 #social-buttons-container {
   margin-top: 50px;
   font-size: 35px;
